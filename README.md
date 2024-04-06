@@ -62,7 +62,7 @@ task1_완성
 # Task2
 
 ## Goal
-- 내가 대화하고 싶은 상대방의 MBTI를 입력하면, 이에 맞는 답변을 출력하는 챗봇을 만들어보자.
+- 내가 대화하고 싶은 상대방의 MBTI를 선택하고, 질문을 입력하면 해당 MBTI가 할만 한 답변을 출력하는 챗봇을 만들어보자.
 
 ## Dataset
 - OpenAI API를 사용한 특정 MBTI Q&A 데이터셋 생성
@@ -79,7 +79,7 @@ input =  "일상생활, 학교생활, 성격, 가치관, 취미, 시사, 스포�
 
 ## Modeling
 ![image](https://github.com/chaehyun1/study/assets/108905986/440d02d2-0355-4cb7-bd09-744373ea8c8f)
-- Davidkim205의 komt-llama2-7b-v1모델
+- Davidkim205의 komt-llama2-7b-v1모델을 Fine Tuning
 - https://huggingface.co/ToBeWithYou/MBTI_ENFP
 - https://huggingface.co/ToBeWithYou/MBTI_ENTP
 - https://huggingface.co/ToBeWithYou/MBTI_ISFJ
