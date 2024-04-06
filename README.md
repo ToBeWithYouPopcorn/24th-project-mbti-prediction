@@ -1,6 +1,6 @@
-# MBTI 추천 모델 & 유형별 대화
+# 사용자의 MBTI 예측 모델 & 유형별 대화
 
-## Process Record
+### Process Record
 - https://www.notion.so/YBIGTA-MBTI-b4bccc4df4704ca59c29bcfad937d477
 
 <br>
@@ -8,20 +8,38 @@
 # Task 1
 
 ## Goal
-- 랜덤하게 선별한 질문을 바탕으로 사용자의 답변을 받기 (multi-turn)
-- 답변들을 바탕으로 사용자의 MBTI 예측
+- 랜덤하게 선별한 질문을 출력하면, 사용자가 답변을 입력 (multi-turn)
+- 답변들을 바탕으로 모델에 입력하고, 최종적으로 사용자의 MBTI 예측
 
 ## Dataset
 - https://www.kaggle.com/datasets/zeyadkhalid/mbti-personality-types-500-dataset/data
+  > Reddit과 PersonalityCafe Forum에서 수집한 게시물을 전처리한, 유저의 MBTI와 게시글 내용을 담은 데이터
 
 ![image](https://github.com/chaehyun1/study/assets/108905986/c04df444-da62-416f-91ab-8703d32c819a)
 ![image](https://github.com/chaehyun1/study/assets/108905986/2786bf3c-9be2-4c38-941e-efa15e01728e)
+
+* 각 MBTI별로 데이터의 개수에 불균형함이 존재
+
+## 데이터 전처리
+<br>
+
+- URL, non-alphanumeric characters 제거
+
+- Data 전체에서 70회 미만으로 사용된 word, nltk library가 정의한 stop word 제거
+및 lemmatizing, lower word로 변환
+
+- Torch로 훈련할 수 있도록 LabelEncoder를 이용해 label column추가. 이를 train,
+val, test에 label로 사용
+
+- mbti마다 data수가 다르므로 data가 가장 많은 MBTI 기준으로 Upsampling
 
 ## Modeling
 ![image](https://github.com/chaehyun1/study/assets/108905986/72e4bd77-145a-4d3c-8b05-8755ed71afae)
 - bert 기반의 pretrained model을 fine-tuning하여 사용  
 
 ## Frontend & Backend
+
+#### 전체 코드 구성
 ```
 task1_완성  
 ├── code
@@ -38,12 +56,13 @@ task1_완성
 ![image](https://github.com/chaehyun1/study/assets/108905986/fa958668-8ec6-4b2f-8857-368f3343197a)
 ![image](https://github.com/chaehyun1/study/assets/108905986/55064238-4e41-4860-96a9-da17ffe62a54)
 
+
 <br>
 
 # Task2
 
 ## Goal
-- 내가 대화하고 싶은 상대방의 MBTI를 입력하고 이에 맞는 답변을 출력하는 챗봇을 만들어보자.
+- 내가 대화하고 싶은 상대방의 MBTI를 입력하면, 이에 맞는 답변을 출력하는 챗봇을 만들어보자.
 
 ## Dataset
 - OpenAI API를 사용한 특정 MBTI Q&A 데이터셋 생성
